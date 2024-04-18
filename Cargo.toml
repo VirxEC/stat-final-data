@@ -7,4 +7,3 @@ edition = "2021"
 crossbeam-channel = "0.5.12"
 fastrand = "2.0.2"
 rocketsim_rs = { version = "0.26.1", features = ["glam"] }
-zstd = "0.13.1"

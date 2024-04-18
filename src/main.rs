@@ -14,7 +14,6 @@ use std::{
     thread,
     time::{Duration, Instant},
 };
-use zstd::stream::copy_encode;
 
 const INTERVAL_TIME: Duration = Duration::from_secs(300);
 const OUT_FOLDER: &str = "results";
@@ -101,14 +100,9 @@ fn main() {
             let file_name = format!("{OUT_FOLDER}/{}.bin", num_iters);
             num_iters += 1;
 
-            // create the file and file writer
-            let file = fs::File::create(&file_name).unwrap();
-            let mut writer = io::BufWriter::new(file);
-
-            // compress the data
-            copy_encode(&bytes[..], &mut writer, 3).unwrap();
-            // write the compressed data
-            writer.flush().unwrap();
+            // write the data to the file
+            let mut file = fs::File::create(&file_name).unwrap();
+            file.write_all(&bytes).unwrap();
 
             current_results.clear();
         }
