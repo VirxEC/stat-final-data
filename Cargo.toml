@@ -1,0 +1,10 @@
+[package]
+name = "stat-final-data"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+crossbeam-channel = "0.5.12"
+fastrand = "2.0.2"
+rocketsim_rs = { version = "0.26.1", features = ["glam"] }
+zstd = "0.13.1"
